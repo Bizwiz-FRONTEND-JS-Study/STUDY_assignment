@@ -12,6 +12,10 @@
 5. (자율) 다른 사람들의 과제물을 보고 코멘트로 자유롭게 코드리뷰를 한다.
 6. 주의!! **기존 폴더를 지우면 안됩니다!!** 개인 폴더 내부만 수정해주세요 :)
 
+![image](https://user-images.githubusercontent.com/94872442/215702852-f361f9b6-d4d6-40e4-a8f7-e50d31821078.png)
+![image](https://user-images.githubusercontent.com/94872442/215702915-3643d5a5-20e9-4559-bed3-37dd0d68d534.png)
+
+
 ## ✅ 소스코드 파일 이름 규칙
 
 - 자유롭게 작성
