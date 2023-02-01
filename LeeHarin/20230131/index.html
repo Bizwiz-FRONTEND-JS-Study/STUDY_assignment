@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>230127_이하린</title>
+    <style>
+      section {
+        width: 300px;
+      }
+      div {
+        display: flex;
+        justify-content: right;
+        margin-bottom: 6px;
+      }
+      input {
+        width: 100px;
+        padding: 6px;
+      }
+      table {
+        width: 100%;
+        border: 1px solid #444444;
+        border-collapse: collapse;
+      }
+      td {
+        border: 1px solid #444444;
+        padding: 10px;
+        width: 80px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <div>
+        <input type="number" id="num" />
+        <button type="button" id="okBtn" onclick="onHandleOk()">확인</button>
+      </div>
+      <table></table>
+    </section>
+
+    <script src="data.json" type="text/javascript"></script>
+    <script>
+      const codeDatas = testData.data;
+      let tableEl = document.querySelector('table');
+
+      window.onload = () => {
+        initTableData();
+      };
+
+      const createRowData = (data) => {
+        const dataRow = document.createElement('tr');
+        dataRow.innerHTML = `<td>${data.code}</td><td>${data.codeName}</td>`;
+        tableEl.appendChild(dataRow);
+      };
+
+      const initTableData = () => {
+        codeDatas.forEach((data) => {
+          createRowData(data);
+        });
+      };
+
+      // table에 있는 각 tr node들을 담은 배열을 바로 사용했더니 에러 발생
+      // 출력형태는 배열과 비슷하지만, 배열이 아닌 '노드 컬렉션' => 배열로 바꿔주어야 정상적으로 작동하는 것을 확인
+      // Array.prototype.slice.call() => slice를 통해 새로운 배열을 변환하기 위해 call 메소드로 바인딩해주어야 함(== call을 사용하여 slice에 nodeList 인자를 넘김)
+      // Array.from() => 유사 배열 객체를 복사
+      // Spread Operator([...]) => 배열을 복사하고 병합할 수 있음
+
+      const changeRowData = (char) => {
+        const changeDatas = codeDatas.filter((data) => char === data.codeName).slice(0, 2);
+        const trList = Array.from(tableEl.childNodes);
+
+        const sameRowList = trList.filter((trEl) =>
+          changeDatas.some((data) => trEl.querySelector('td').innerText === data.code.toString())
+        );
+
+        sameRowList.forEach((rowEl) => {
+          let rowCodeName = rowEl.querySelector('td:nth-child(2)').innerText;
+          if (rowCodeName.includes('find')) return;
+          rowEl.querySelector('td:nth-child(2)').innerText = 'find-' + rowCodeName;
+        });
+      };
+
+      const onHandleOk = () => {
+        const numInput = document.querySelector('#num');
+        if (!numInput.value) {
+          alert('숫자를 입력하세요!');
+          return;
+        }
+        const getNumValue = Number(numInput.value);
+        const fData = codeDatas.find((data) => getNumValue === data.code);
+        changeRowData(fData.codeName); //z
+      };
+
+      const getRandomChar = () => {
+        const randomNum = Math.floor(Math.random() * (122 - 97)) + 97;
+        return String.fromCharCode(randomNum);
+      };
+
+      const createNewData = () => {
+        const newData = [];
+        for (let i = 1; i <= 1000; i++) {
+          newData.push({ code: i, codeName: getRandomChar() });
+        }
+        return newData;
+      };
+    </script>
+  </body>
+</html>
