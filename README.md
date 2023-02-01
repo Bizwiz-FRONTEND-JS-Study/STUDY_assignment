@@ -1,4 +1,4 @@
-# 알고리즘 과제 제출 Repository
+# 스터디 과제 제출 Repository
 
 
 ✅ 참여 방법
