@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try ME!!</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+      }
+
+      .wrap_input {
+        margin: 10px 0px 10px 0px;
+        width: inherit;
+      }
+
+      .wrap_input > input {
+        width: 300px;
+        box-sizing: border-box;
+      }
+
+      .wrap_button {
+        width: inherit;
+        height: 40px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .wrap_button > div {
+        width: 200px;
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .wrap_button > div > p {
+        line-height: 19px;
+        font-size: 13px;
+        color: #ff726b;
+      }
+
+      .wrap_button > button {
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 300px;
+      }
+      tr {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        width: inherit;
+      }
+      tr:nth-child(odd) {
+        background-color: #e6f1ff;
+      }
+      tr:nth-child(even) {
+        background-color: #f0f7ff;
+      }
+      tr:hover {
+        background-color: #ffc5c2;
+        cursor: pointer;
+      }
+      td {
+        padding: 5px 10px;
+        border-left: 1px solid black;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label>TRY ME! 😎</label>
+      <div class="wrap_input">
+        <input
+          id="inputValue"
+          type="text"
+          placeholder="Enter any number between 1 and 1000!"
+        />
+        <div class="wrap_button">
+          <div>
+            <p id="validationResult">(^ㅁ^) /</p>
+          </div>
+          <button id="findButton" type="submit">FIND</button>
+          <button id="resetButton" type="submit">RESET</button>
+        </div>
+      </div>
+      <div>
+        <table id="dataTable"></table>
+      </div>
+    </div>
+
+    <script>
+      fetch("./data.json")
+        .then((res) => {
+          return res.json();
+        })
+        .then((obj) => {
+          List(obj);
+        });
+
+      function List(obj) {
+        // Setting list : start
+        for (let i = 0; i < obj.length; i++) {
+          const code = obj[i].code;
+          const codeName = obj[i].codeName;
+
+          const dataTable = document.querySelector("#dataTable");
+          const tr = document.createElement("tr");
+          const codeTd = document.createElement("td");
+          const codeNameTd = document.createElement("td");
+
+          codeTd.textContent = `${code}`;
+          codeNameTd.textContent = `${codeName}`;
+          codeNameTd.className = "target";
+
+          dataTable.appendChild(tr);
+          tr.appendChild(codeTd);
+          tr.appendChild(codeNameTd);
+        }
+        // Setting list : end
+
+        // Button Event : start
+        const findButton = document.querySelector("#findButton");
+        const resetButton = document.querySelector("#resetButton");
+
+        const findTwoWords = (e) => {
+          const targetCode = document.querySelector("#inputValue").value;
+          const targetName = obj.find((e) => e.code == targetCode).codeName;
+          const findIndex1 = obj.findIndex((e) => e.codeName === targetName);
+          const findIndex2 = obj.findIndex(
+            (e, index) => e.codeName === targetName && index !== findIndex1
+          );
+
+          const targets = document.getElementsByClassName("target");
+          const findCodeNameTd1 = targets.item(findIndex1);
+          const findCodeNameTd2 = targets.item(findIndex2);
+
+          findCodeNameTd1.textContent = `find - ${targetName}`;
+          findCodeNameTd2.textContent = `find - ${targetName}`;
+
+          const resultText = document.querySelector("#validationResult");
+          resultText.textContent = `I found "${targetName}" in ${
+            findIndex1 + 1
+          }, ${findIndex2 + 1}th row!!`;
+        };
+
+        const resetCodeNames = (e) => {
+          location.reload(true);
+        };
+
+        findButton.addEventListener("click", findTwoWords);
+        resetButton.addEventListener("click", resetCodeNames);
+        // Button Event : end
+      }
+    </script>
+  </body>
+</html>
