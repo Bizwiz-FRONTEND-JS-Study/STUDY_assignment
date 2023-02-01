@@ -17,8 +17,8 @@
 
 ## ✅ git fork 처음 사용하시는 분들은 아래 링크 정독하시구 시도해 보세요!
 
-- git fork 해서 공동작업 하기[https://garve32.tistory.com/31]
-- Fork했던 Repository 최신으로 동기화[https://velog.io/@sangjin98/Git-Fork%ED%96%88%EB%8D%98-Repository-%EC%B5%9C%EC%8B%A0%EC%9C%BC%EB%A1%9C-%EB%8F%99%EA%B8%B0%ED%99%94%ED%95%98%EA%B8%B0]
+- [git fork 해서 공동작업 하기](https://garve32.tistory.com/31)
+- [Fork했던 Repository 최신으로 동기화](https://velog.io/@sangjin98/Git-Fork%ED%96%88%EB%8D%98-Repository-%EC%B5%9C%EC%8B%A0%EC%9C%BC%EB%A1%9C-%EB%8F%99%EA%B8%B0%ED%99%94%ED%95%98%EA%B8%B0)
 
 ## ✅ 소스코드 파일 이름 규칙
 
