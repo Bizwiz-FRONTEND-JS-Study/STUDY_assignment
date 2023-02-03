@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  <!-- Script -->
+  <script src="data.js" type="text/javascript"></script>
+  <script src="code.js" type="text/javascript" async></script>
+  <style>
+    .box {
+      margin-left: 100px;
+    }
+    .head {
+				border-collapse: collapse;
+			}
+    #search_form {
+      margin: 50px 0px;
+    }
+    #search_form input {
+      height: 24px;
+      width: 240px;
+    }
+    #search_form button {
+      padding: 7px 20px;
+      background-color: rgb(90, 153, 236);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div id="haha"></div>
+    <!-- Search box -->
+    <div id="search_form">
+      <input id="search" placeholder="알파벳을 입력해주세요"  value="" type="text"/>
+      <button onclick = tableData()>search</button>
+      <button onclick = "window.location.reload()">Reset</button>
+    </div>
+    <div>
+      <table class="head" border="1" width="330">
+          <tbody id="section">
+            <tr>
+              <th>CODE</th>
+              <th>CODE NAME</th>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
