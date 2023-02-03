@@ -1,0 +1,107 @@
+<html>
+<head>
+    <script src="data.json" type="text/javascript"></script>
+
+    <script>
+        const _dataArray = testData.data;
+        var _elementMap = {};            
+
+        function addRow(code, name) {
+            var table = document.getElementById('tbl');
+            var newRow = table.insertRow();
+
+            var newCell1 = newRow.insertCell(0);
+            var newCell2 = newRow.insertCell(1);
+
+            newRow.id = "row_" + code;
+            newCell1.innerText = code;
+            newCell2.innerText = name;
+        }
+
+        function btn_click() {
+            var seqInput = document.getElementById('findSeq');
+            findBySeq(seqInput.value);
+        }
+
+        function setDataToTable() {
+            //todo 두가지 관심사가 같이 있습니다. 메소드를 분리하는것과 이대로 합치는것에 대해 고민하면 좋아보입니다.
+            var elementMap = {};            
+            for (let idx = 0; idx < _dataArray.length; idx++) {
+                var element = _dataArray[idx];
+                addRow(element.code, element.codeName)
+                elementMap = convertToMap(elementMap, element)
+            }
+            _elementMap = elementMap
+        }
+
+        function convertToMap(elementMap, element) {
+            if (!elementMap.hasOwnProperty(element.codeName)) {
+                elementMap[element.codeName] = []
+            }   
+            
+
+            elementMap[element.codeName].push(element.code);            
+            return elementMap;
+        }
+
+        function createData(){
+            //todo 새로운 data를 직접 만든다면? object에 1~1000까지 넣고 randome함수를 이용하여 a~z까지 넣으려면?
+        }
+
+    </script>
+    <script>
+        //seq == code, 가급적 명칭을 리팩토링해보시고 리뷰때 어느것이 가독성/이해면에서 좋은지 이야기해주세요.
+        function findBySeq(seq) {
+            var codeName = getCodeNameByRowId(seq)
+            var codes = _elementMap[codeName]
+            // 2개 이상을 변경하고 싶을때는?
+            for (let idx = 0; idx < codes.length && idx < 2; idx++) {
+                setCodeNameByRowId(codes[idx], 'find-'+codeName);
+            }
+        }
+
+        function getCodeNameByRowId(seq){
+            //난잡한 'row_' + seq...
+            var row = document.getElementById('row_' + seq);
+            var codeName = row.cells[1].innerText
+            return codeName
+        }
+
+        function setCodeNameByRowId(seq, replaceStr){
+            var row = document.getElementById('row_' + seq);
+            row.cells[1].innerText = replaceStr            
+        }
+
+    </script>
+    <style>
+        table {
+            width: 30%;
+            border: 1px solid #444444;
+            border-collapse: collapse;
+            vertical-align: top;
+        }
+
+        th,
+        td {
+            border: 1px solid #444444;
+            height: 20px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body onload="setDataToTable()">
+    <div>
+        <input id="findSeq" type="text" value="" />
+        <input type="button" value="find" onclick="btn_click()">
+    </div>
+    <table id="tbl">
+        <thead>
+            <th>code</th>
+            <th>name</th>
+        </thead>
+        <tbody id="tbd"></tbody>
+    </table>
+</body>
+
+</html>
