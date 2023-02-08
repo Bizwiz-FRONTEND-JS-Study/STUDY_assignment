@@ -1,5 +1,5 @@
 
-const a = {
+const basicData = {
   data: [
     {
       code: 1,
