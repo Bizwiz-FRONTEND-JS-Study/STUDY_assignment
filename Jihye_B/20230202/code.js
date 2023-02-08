@@ -1,13 +1,12 @@
 const tableData = () => {
   const data = basicData.data;
-  //입력받은 데이터 숫자, 문자 구분하여 keyWord 추출
+  //입력받은 데이터 체크하여 value 값 변경
   let enterData = document.getElementById("search").value;
   if (enterData) {
-    if (!isNaN(enterData)) { 
-      const findCode = data.find(row => row.code == enterData);
-      enterData = findCode.codeName;
-    }
     const result = data.filter((row)=> {
+      if (!isNaN(enterData) && row.code == enterData) {
+        enterData = row.codeName;
+      }
       return enterData == row.codeName;
     })
     document.getElementById(result[0].code).innerText = 'find-'+ result[0].codeName
