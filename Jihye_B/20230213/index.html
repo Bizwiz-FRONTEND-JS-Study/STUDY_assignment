@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Counter</title>
+  <!-- Script -->
+  <script src="data.js" type="text/javascript"></script>
+  <script src="code.js" type="text/javascript" async></script>
+  <style>
+    .counter {
+      background-color: rgb(213, 232, 250);
+      padding: 40px;
+      border-radius: 15px;
+    }
+    .counter h2 {
+      color: rgb(21, 120, 212);
+    }
+    .counter .button_section button {
+      background-color: #fff;
+      padding: 8px 24px;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 3px 3px 10px 2px rgb(161, 193, 223);
+      margin: 0 5px;
+      cursor : pointer;
+      transition: 0.2s;
+    }
+    .counter .button_section button:hover {
+      background-color: rgb(70, 163, 240);
+      color: #fff
+    }
+    .counter .button_section div {
+      display: inline-block;
+      width: 150px;
+      height: 30px;
+      padding: 0px 10px;
+      background-color: #fff;
+      transform: translateY(2px);
+      margin-left: 20px;
+    }
+    .counter .button_section div p {
+      margin: 0;
+      line-height: 30px
+    }
+    .timer h2 {
+      color: rgb(21, 120, 212);
+    }
+  </style>
+</head>
+<body>
+  <div class="counter">
+    <h2>Click!</h2>
+    <div class="button_section">
+      <button onclick= plusClick() id="plus">Plus</button>
+      <button onclick= minusClick() id="minus">Minus</button>
+      <button onclick= resetClick() id="reset">Reset</button>
+      <div>
+        <p id="number">0</p>
+      </div>
+    </div>
+  </div>
+  <div class="timer">
+    <h2 id="clock"></h2>
+  </div>
+</body>
+</html>
