@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .wrap_counter {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      button {
+        width: 40px;
+        height: 30px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrap_counter">
+        <h2 id="number">0</h2>
+        <div>
+          <button id="plus">+</button>
+          <button id="minus">-</button>
+        </div>
+      </div>
+      <div class="wrap_clock">
+        <h2 id="clock">00:00:00</h2>
+      </div>
+    </div>
+
+    <script>
+      const $number = document.getElementById("number");
+      const $plus = document.getElementById("plus");
+      const $minus = document.getElementById("minus");
+
+      $plus.onclick = () => {
+        $number.innerText = Number($number.innerText) + 1;
+      };
+
+      $minus.onclick = () => {
+        Number($number.innerText) > 0
+          ? ($number.innerText = Number($number.innerText) - 1)
+          : alert("음수는 셀 수 없습니다!! :(");
+      };
+
+      const $clock = document.getElementById("clock");
+
+      const getClock = () => {
+        const now = new Date();
+        console.log(now);
+        console.dir(now);
+        // console.log는 요소를 HTML과 같은 트리 구조로 출력 하고, DOM 요소에 대해 특별한 처리를 제공.
+        // console.dir은 요소를 JSON과 같은 트리 구조로 출력 하고, DOM JS 객체의 전체 표현을 보려고 할 때 유용.
+        // 객체는 dir, 나머지는 log로 로깅하면 편하다.
+
+        const hour = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        clock.innerText = `${hour}:${minutes}:${seconds}`;
+      };
+
+      getClock();
+      setInterval(getClock, 1000);
+    </script>
+  </body>
+</html>
