@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>20230220</title>
+    <script type="module" src="./main.js" defer></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      section {
+        width: 360px;
+        height: 280px;
+        background-color: #d3f3ff;
+        margin: 200px auto;
+        padding: 25px 10px 0;
+        border: 2px solid black;
+        border-radius: 6px;
+        transform: scale(1.3);
+      }
+      #calcTemp {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        grid-template-rows: 50px 200px;
+        grid-template-columns: 250px 80px;
+        gap: 6px;
+      }
+      #result {
+        grid-row: 1 / 2;
+        grid-column: 1 / 3;
+        height: 30px;
+        background-color: #fff;
+        border: 2px solid black;
+        margin-bottom: 5px;
+        padding: 10px 20px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-align: right;
+      }
+      #numbers {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        display: grid;
+        gap: 5px;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+      }
+      #actions {
+        display: grid;
+        grid-row: 2 / 3;
+        grid-column: 2 /3;
+        gap: 5px;
+      }
+      .btn {
+        background-color: rgb(255, 242, 176);
+        font-weight: bold;
+        width: 80px;
+        height: 40px;
+        border-radius: 12px;
+        box-shadow: 2px 2px rgb(53, 50, 35);
+        transition-duration: 0.2s;
+        font-size: 16px;
+      }
+      .btn:nth-child(1) {
+        order: 10;
+      }
+      .reset {
+        order: 11;
+        background-color: #debaf3;
+      }
+      .enter {
+        order: 12;
+        background-color: #debaf3;
+      }
+      .action {
+        background-color: aquamarine;
+      }
+      .btn:active {
+        transform: translateX(3px);
+        transform: translateY(3px);
+        box-shadow: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="calc"></section>
+  </body>
+</html>
