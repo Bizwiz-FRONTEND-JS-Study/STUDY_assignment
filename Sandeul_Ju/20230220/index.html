@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator😛</title>
+    <!-- <script src="calculator.js" type="text/javascript" async></script> -->
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 600px;
+      }
+
+      .result {
+        width: 100%;
+        height: 20%;
+        padding: 15px;
+        background-color: #3b3b3b;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .result input {
+        color: #e2e2e2;
+        font-size: 28px;
+        font-weight: 500;
+        background-color: #3b3b3b;
+        border: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      .wrap_button {
+        width: 100%;
+        height: 80%;
+        background-color: #3b3b3b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 2px;
+        box-sizing: border-box;
+      }
+
+      .wrap_line {
+        width: 100%;
+        height: 20%;
+        background-color: #3b3b3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .number {
+        width: 23%;
+        height: 93%;
+        margin: 0 3.5px;
+        background-color: #666666;
+        border: none;
+        color: #d9d9d9;
+        font-size: 24px;
+      }
+
+      .zero_button {
+        width: 73% !important;
+      }
+
+      .operator_right {
+        background-color: rgb(255, 119, 0);
+      }
+
+      .operator_top {
+        background-color: #515151;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="result">
+        <input id="result_value" onkeyup="calculate()" />
+      </div>
+      <div class="wrap_button">
+        <div class="wrap_line">
+          <button id="opr_reset" class="number operator_top">AC</button>
+          <button id="opr_remain" class="number operator_top">%</button>
+          <button id="opr_back" class="number operator_top">«</button>
+          <button id="opr_divide" class="number operator_right">÷</button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_7" class="number">7</button>
+          <button id="num_8" class="number">8</button>
+          <button id="num_9" class="number">9</button>
+          <button id="opr_multiply" class="number operator_right">×</button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_4" class="number">4</button>
+          <button id="num_5" class="number">5</button>
+          <button id="num_6" class="number">6</button>
+          <button id="opr_minus" class="number operator_right">-</button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_1" class="number">1</button>
+          <button id="num_2" class="number">2</button>
+          <button id="num_3" class="number">3</button>
+          <button id="opr_plus" class="number operator_right">+</button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_0" class="number zero_button">0</button>
+          <button id="opr_return" class="number operator_right">=</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = () => {
+        calculate();
+      };
+      // UI number select
+      const $0 = document.querySelector("#num_1");
+      const $1 = document.querySelector("#num_1");
+      const $2 = document.querySelector("#num_2");
+      const $3 = document.querySelector("#num_3");
+      const $4 = document.querySelector("#num_4");
+      const $5 = document.querySelector("#num_5");
+      const $6 = document.querySelector("#num_6");
+      const $7 = document.querySelector("#num_7");
+      const $8 = document.querySelector("#num_8");
+      const $9 = document.querySelector("#num_9");
+
+      // UI operator select
+      const $reset = document.querySelector("#opr_reset");
+      const $remain = document.querySelector("#opr_remain");
+      const $back = document.querySelector("#opr_back");
+      const $divide = document.querySelector("#opr_divide");
+      const $multifly = document.querySelector("#opr_multifly");
+      const $minus = document.querySelector("#opr_minus");
+      const $plus = document.querySelector("#opr_plus");
+      const $return = document.querySelector("#opr_return");
+
+      // UI result h2 select
+      const $result = document.querySelector("#result_value");
+      // const $value = document.querySelector("#result_value").value;
+      // console.log($value);
+
+      const calculate = (result = $result) => {
+        let value = result.value;
+        const checkNumberOperator = /^[0-9+\-*/=]*$/;
+        if (window.event.keyCode == 13) {
+          //   console.log("성공?");
+          //   console.log(document.querySelector("#result_value").value);
+          //   console.log(result.value);
+          // if(value )
+          //   console.log(value);
+          console.log(checkNumberOperator.test(value));
+          if (!checkNumberOperator.test(value)) {
+            alert("올바른 계산식이 아닙니다.");
+          } else {
+            alert(`답 : ${eval(value)}`);
+            // result.setAttribute("value", `${eval(value)}`);
+            // value = eval(value);
+
+            // const checkNumber = /[0-9]/;
+            // const checkOperator = /[\+\-\*\/]/;
+
+            // console.log(eval(value));
+            // // console.log(value.match(checkNumber));
+            // // console.log(value.match(checkOperator));
+            // console.log(value.split(checkNumber).join("").split(""));
+            // console.log(value.split(checkOperator));
+
+            // const inputOperatorArr = value
+            //   .split(checkNumber)
+            //   .join("")
+            //   .split("");
+            // const inputNumber = value.split(checkOperator);
+
+            // if (inputOperatorArr.length <= 0) {
+            //   value = inputNumber[0];
+            // } else {
+            // }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
