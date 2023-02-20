@@ -8,14 +8,12 @@
     <script src="example.js" defer></script>
 </head>
 <body>
-  <div>
-    <input id="CountInput" type="number" value="0" />
-    <div>
-      <button type="button" onclick="Increase()">+</button>
-      <button type="button" onclick="Reduction()">-</button>
-      <button type="button" onclick="Reset()">reset</button>
-    </div>
+  <div class="countDiv">
+    <input class="countInput" type="number" value="0" />
   </div>
+  <button type="button" onclick="IncreaseBtn()" >+</button>
+  <button type="button" onclick="ReductionBtn()">-</button>
+  <button type="button" onclick="ResetBtn()">reset</button>
 
   <div>
     <div class="currentTime">날짜 : </div>
