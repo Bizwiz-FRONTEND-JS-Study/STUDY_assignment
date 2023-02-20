@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator😛</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 600px;
+      }
+
+      .result {
+        width: 100%;
+        height: 20%;
+        padding: 15px;
+        background-color: #3b3b3b;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        box-sizing: border-box;
+      }
+
+      .result h2 {
+        color: #e7e7e7;
+        font-weight: 500;
+        width: 100%;
+        height: 48%;
+        display: flex;
+        justify-content: flex-end;
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .result input {
+        color: #e2e2e2;
+        font-size: 28px;
+        font-weight: 500;
+        background-color: #3b3b3b;
+        /* border: none; */
+        width: 100%;
+        height: 48%;
+      }
+
+      .wrap_button {
+        width: 100%;
+        height: 80%;
+        background-color: #3b3b3b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 2px;
+        box-sizing: border-box;
+      }
+
+      .wrap_line {
+        width: 100%;
+        height: 20%;
+        background-color: #3b3b3b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .number {
+        width: 23%;
+        height: 93%;
+        margin: 0 3.5px;
+        background-color: #666666;
+        border: none;
+        color: #d9d9d9;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .number:hover {
+        background-color: #999999;
+      }
+
+      .zero_button {
+        width: 73% !important;
+      }
+
+      .operator_right {
+        background-color: rgb(255, 119, 0);
+      }
+
+      .operator_right:hover {
+        background-color: rgb(255, 170, 96);
+      }
+
+      .operator_top {
+        background-color: #515151;
+      }
+
+      .operator_top:hover {
+        background-color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="result">
+        <h2 id="result_text"></h2>
+        <input id="result_value" onkeyup="calculate1()" />
+      </div>
+      <div class="wrap_button">
+        <div class="wrap_line">
+          <button id="opr_reset" class="number operator_top" onclick="reset()">
+            AC
+          </button>
+          <button
+            id="opr_remain"
+            class="number operator_top"
+            value="%"
+            onclick="operator(this)"
+          >
+            %
+          </button>
+          <button id="opr_back" class="number operator_top">«</button>
+          <button
+            id="opr_divide"
+            class="number operator_right"
+            value="÷"
+            onclick="operator(this)"
+          >
+            ÷
+          </button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_7" class="number" value="7" onclick="number(this)">
+            7
+          </button>
+          <button id="num_8" class="number" value="8" onclick="number(this)">
+            8
+          </button>
+          <button id="num_9" class="number" value="9" onclick="number(this)">
+            9
+          </button>
+          <button
+            id="opr_multiply"
+            class="number operator_right"
+            value="*"
+            onclick="operator(this)"
+          >
+            ×
+          </button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_4" class="number" value="4" onclick="number(this)">
+            4
+          </button>
+          <button id="num_5" class="number" value="5" onclick="number(this)">
+            5
+          </button>
+          <button id="num_6" class="number" value="6" onclick="number(this)">
+            6
+          </button>
+          <button
+            id="opr_minus"
+            class="number operator_right"
+            value="-"
+            onclick="operator(this)"
+          >
+            -
+          </button>
+        </div>
+        <div class="wrap_line">
+          <button id="num_1" class="number" value="1" onclick="number(this)">
+            1
+          </button>
+          <button id="num_2" class="number" value="2" onclick="number(this)">
+            2
+          </button>
+          <button id="num_3" class="number" value="3" onclick="number(this)">
+            3
+          </button>
+          <button
+            id="opr_plus"
+            class="number operator_right"
+            value="+"
+            onclick="operator(this)"
+          >
+            +
+          </button>
+        </div>
+        <div class="wrap_line">
+          <button
+            id="num_0"
+            class="number zero_button"
+            value="0"
+            onclick="number(this)"
+          >
+            0
+          </button>
+          <button
+            id="opr_return"
+            class="number operator_right"
+            onclick="returnResult()"
+          >
+            =
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // UI result select
+      const $resultValue = document.querySelector("#result_value");
+      const $resultText = document.querySelector("#result_text");
+
+      // input을 통한 계산
+      const calculate1 = (result = $resultValue, text = $resultText) => {
+        let value = result.value;
+        const checkNumberOperator = /^[0-9+\-*/=]*$/;
+        if (window.event.keyCode == 13) {
+          if (!checkNumberOperator.test(value)) {
+            alert("올바른 계산식이 아닙니다.");
+          } else {
+            text.innerHTML = `${eval(value)}`;
+          }
+        }
+      };
+
+      // reset Button
+      const reset = (result = $resultValue, text = $resultText) => {
+        result.value = "";
+        text.innerHTML = "";
+        resultArr = [];
+      };
+
+      // number pad를 통한 계산
+      let resultArr = [];
+
+      // 연산자 Button 입력 관리
+      const operator = (event, text = $resultText) => {
+        if (resultArr.length <= 0) {
+          text.innerHTML = "";
+        }
+        const clickedOperator = document
+          .getElementById(event.getAttribute("id"))
+          .getAttribute("value");
+
+        resultArr.push(clickedOperator);
+        text.innerHTML = text.innerHTML + clickedOperator;
+      };
+
+      // 숫자 Button 입력 관리
+      const number = (event, text = $resultText) => {
+        if (resultArr.length <= 0) {
+          text.innerHTML = "";
+        }
+        const clickedNumber = document
+          .getElementById(event.getAttribute("id"))
+          .getAttribute("value");
+
+        resultArr.push(clickedNumber);
+        text.innerHTML = text.innerHTML + clickedNumber;
+      };
+
+      // 결과 반환(=) Button
+      const returnResult = (text = $resultText) => {
+        text.innerHTML = `${eval(resultArr.join(""))}`;
+        resultArr = [];
+      };
+    </script>
+  </body>
+</html>
