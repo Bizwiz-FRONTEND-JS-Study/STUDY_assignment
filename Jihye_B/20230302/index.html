@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-change-animation</title>
+  <style>
+    /* Google Web Font */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      /* background-color: #000; */
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .heading {
+      color: #000;
+      margin: 0;
+    }
+    .heading:before {
+      content: '';
+      animation: changetext 8s infinite;
+      animation-play-state: running;
+    }
+    .heading:hover:before {
+      animation-play-state: paused;
+    }
+    @keyframes changetext {
+      0% {
+        content: '안녕하세요 만나서 반가워요!';
+      }
+      20% {
+        content: '오늘 먹고 싶은 메뉴는 뭔가요?';
+      }
+      40% {
+        content: '치킨?';
+      }
+      60% {
+        content: '피자?';
+      }
+      80% {
+        content: '원하는 음식을 검색해보세요!';
+      }
+      100% {
+        content: '안녕하세요 만나서 반가워요!';
+      }
+    }
+    .search {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1 class="heading"></h1>
+    <div class="search">
+      <input type="text" placeholder="음식을 입력하세요">
+      <span>검색</span>
+      <span>랜덤!</span>
+    </div>
+  </div>
+
+</body>
+</html>
