@@ -1,0 +1,143 @@
+:root {
+	--color-gray: rgb(207, 207, 207);
+	--color-green: #586e5b;
+	--color-light-green: #B4C6A6;
+	--color-orange: #e6ae77;
+	--color-lemon: #fdf1b4;
+}
+body {
+	background-color: var(--color-green);
+	color: var(--color-lemon);
+	box-sizing: border-box;
+}
+.title {
+	text-align: center;
+	margin-top: 30px;
+}
+.search-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.search-container .searchInput{
+	margin-right: 10px;
+	width: 350px;
+	height: 35px;
+	border: 1px solid var(--color-orange);
+	border-radius: 5px;
+	box-sizing: border-box;
+	background-color: var(--color-orange);
+	display: flex;
+}
+.search-container .searchInput input,
+.search-container .searchInput input:focus{
+	flex-grow: 2;
+	border: 1px solid var(--color-orange);
+	font-size: 16px;
+	padding: 5px;
+}
+.search-container .btn {
+	border: none;
+	background-color: var(--color-orange);
+	cursor: pointer;
+	height: 100%;
+}
+.search-container .shuffle-btn {
+	height: 35px;
+	border-radius: 5px;
+}
+
+.result-title {
+	text-align: center;
+	margin-top: 15px;
+}
+.meals {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.meals h2 {
+	text-align: center;
+	flex-basis: 100%;
+}
+.meals .menuImg {
+	margin: 5px;
+	position: relative;
+}
+.meals .menuImg .meal-info {
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	background-color: black;
+	width: 100%;
+	height: 98%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.2s ease-in;
+	opacity: 0;
+}
+.meals .menuImg .meal-info:hover{
+	opacity: .7;
+	cursor: pointer;
+}
+.meals .menuImg img{
+	width: 180px;
+	border: 3px solid;
+}
+/* shuffle single menu */
+.single-meals {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.single-meals h1{
+	font-size: 2.5em;
+}
+.single-meals img{
+	border: 3px solid;
+	width:  280px;
+	border-radius: 3px;
+}
+.single-meals .category-area{
+	width: 500px;
+	text-align: center;
+	font-size: 1.4em;
+	border: 3px dotted var(--color-orange);
+	margin: 30px;
+	padding: 0px 20px;
+}
+.single-meals .flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.single-meals .instruction{
+	width: 530px;
+	font-size: 1.1em;
+	text-align: center;
+}
+.single-meals .single-ing-title {
+	color: var(--color-orange);
+}
+.single-meals .ing-list {
+	padding: 0;
+	width: 530px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.single-meals .ing-list li{
+	list-style: none;
+	border: 1px solid var(--color-lemon);
+	background-color: var(--color-lemon);
+	margin: 5px;
+	color: var(--color-green);
+	font-weight: bold;
+	padding: 5px;
+	border-radius: 3px;
+}
