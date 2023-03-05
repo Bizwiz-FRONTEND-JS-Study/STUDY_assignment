@@ -1,0 +1,169 @@
+/* Google Web Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0; 
+  padding-left: 100px;
+}
+.container h4 {
+  margin: 0;
+}
+.heading {
+  color: #000;
+  display: flex;
+  height: 9vh;
+  justify-content: left;
+  align-items: center;
+  margin: 0;
+  margin-top: 200px;
+}
+.heading:before {
+  content: '';
+  animation: changetext 8s infinite;
+  animation-play-state: running;
+}
+.heading:hover:before {
+  animation-play-state: paused;
+}
+@keyframes changetext {
+  0% {
+    content: '안녕하세요 만나서 반가워요!';
+  }
+  20% {
+    content: '오늘 먹고 싶은 메뉴는 뭔가요?';
+  }
+  40% {
+    content: '치킨?';
+  }
+  60% {
+    content: '피자?';
+  }
+  80% {
+    content: '원하는 음식을 검색해보세요!';
+  }
+  100% {
+    content: '안녕하세요 만나서 반가워요!';
+  }
+}
+.search input {
+  width: 300px;
+  height: 30px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-size: 14px;
+  padding-left: 10px;
+  margin: 0;
+}
+.search button {
+  background-color: rgb(0, 0, 0);
+  padding: 6px 14px;
+  margin: 0;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.search button:last-child {
+  background-color: rgb(255, 39, 39);
+  border: 2px solid rgb(255, 39, 39);
+}
+#result {
+  height: 50px;
+}
+#filter_meal {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+#filter_meal .meal {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.meal .meal_img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+}
+.meal .meal-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  margin: auto;
+}
+.meal .meal-info p {
+  color: #fff;
+  font-size: 14px;
+}
+.meal .meal_img img {
+  width: inherit;
+  height: inherit;
+  filter: brightness(50%); 
+}
+
+/* category_meal */
+#category_meal {
+  margin-top: 30px;
+  width: 1000px;
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 24px;
+  column-gap: 34px;
+}
+#category_meal .meal_items {
+  position: relative;
+  height: 220px;
+  width: 180px;
+  box-shadow: 0 0 6px 4px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  transition: 0.25s;
+}
+#category_meal .meal_items img {
+  object-fit: cover;
+  width: 140px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: grayscale(100%);
+}
+#category_meal .meal_items h4 {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(119, 119, 119);
+}
+#category_meal .meal_items:hover {
+  transform: translateY(-12px);
+}
+#category_meal .meal_items:hover img {
+  filter: grayscale(0%)
+}
+#category_meal .meal_items:hover h4 {
+  color: #000;
+}
+
+/* detail_meal */
+#detail_meal {  
+  width: 600px;
+  text-align: center;
+  /* box-shadow: 0 0 6px 4px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  padding: 20px; */
+}
+#detail_meal .info_meal img {
+  width: 400px;
+}
+#detail_meal .info_meal ul li {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
