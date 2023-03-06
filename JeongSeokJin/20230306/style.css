@@ -1,0 +1,26 @@
+.container{
+  margin: 0 auto;
+  width: 1200px;
+  text-align: center;
+}
+.card-content{
+  width: 100%;
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+.card-item {
+  margin: 20px 0;
+  cursor: pointer;
+}
+.card-img {
+  margin: 0 auto;
+  width: 75%;
+}
+.card-img > img {
+  width: 100%;
+  border-radius: 15px;
+}
+.card-content2{
+  width: 100%;
+}
