@@ -1,43 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="calculator.js" type="module" defer ></script>
-</head>
-<body>
-  <div class="container">
-    <div class="calculator">
-      <div class="calculator_txt">0</div>
-      <div class="calculator_content">
-        <div class="row">
-          <button class="numberBtn" value="7">7</button>
-          <button class="numberBtn" value="8">8</button>
-          <button class="numberBtn" value="9">9</button>
-          <button class="operator">+</button>
-        </div>
-        <div class="row">
-          <button class="numberBtn" value="4">4</button>
-          <button class="numberBtn" value="5">5</button>
-          <button class="numberBtn" value="6">6</button>
-          <button class="operator">-</button>
-        </div>
-        <div class="row">
-          <button class="numberBtn" value="1">1</button>
-          <button class="numberBtn" value="2">2</button>
-          <button class="numberBtn" value="3">3</button>
-          <button class="operator">*</button>
-        </div>
-        <div class="row">
-          <button class="numberBtn" value="0">0</button>
-          <button class="operator">/</button>
-          <button class="operator">=</button>
-          <button class="clear">C</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+<html>
+  <head>
+    <title>JavaScript Calculator</title>
+    <script src="calculator.js" defer></script>
+  </head>
+  <body>
+    <input type="text" id="result" name="result" readonly value="0"><br>
+
+    <button type="button" data-number="1">1</button>
+    <button type="button" data-number="2">2</button>
+    <button type="button" data-number="3">3</button>
+    <button type="button" data-operation="+">+</button>
+    <br>
+
+    <button type="button" data-number="4">4</button>
+    <button type="button" data-number="5">5</button>
+    <button type="button" data-number="6">6</button>
+    <button type="button" data-operation="-">-</button>
+    <br>
+
+    <button type="button" data-number="7">7</button>
+    <button type="button" data-number="8">8</button>
+    <button type="button" data-number="9">9</button>
+    <button type="button" data-operation="*">*</button>
+    <br>
+
+    <button type="button" data-number="0">0</button>
+    <button type="button" data-operation="/">/</button>
+    <button type="button" data-clear>C</button>
+    <button type="button" data-equals>=</button>
+    <br>
+
+
+  </body>
 </html>
